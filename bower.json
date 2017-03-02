@@ -1,6 +1,6 @@
 {
     "name": "scc-polymer-tracker",
-    "version": "0.1.0",
+    "version": "v1.0.0",
     "description": "Pizza style tracker",
     "license": "MIT",
     "main": "scc-polymer-tracker.html",
