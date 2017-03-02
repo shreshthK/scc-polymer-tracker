@@ -1,0 +1,78 @@
+<!-- Imports polymer -->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="css/style.html">
+
+
+<!-- Defines element markup -->
+<dom-module id="scc-polymer-tracker">
+    <template>
+        <style include="tracker-styles"></style>
+        <template is="dom-if" if="{{trackerStates.length>0}}">
+            <ul class="progress-tracker progress-tracker--text progress-tracker--text-top">
+                <template is="dom-repeat" items="{{trackerStates}}" as="trackerState" index-as="index">
+                    <li class$="{{_getStatusClasses(trackerState.status)}}">
+                        <span class="progress-text">
+                            <h4 class="progress-title">Step {{stepIndex(index)}}</h4>
+                            {{trackerState.desc}}
+                        </span>
+                        <span class="progress-marker"></span>
+                    </li>
+                </template>
+            </ul>
+        </template>
+    </template>
+
+    <!-- Registers custom element -->
+    <script>
+        Polymer({
+            is: 'scc-polymer-tracker',
+
+            properties: {
+                trackerStates: {
+                    type: Object
+                },
+                align: String
+            },
+
+            // Fires when an instance of the element is created
+            created: function () {
+            },
+
+            // Fires when the local DOM has been fully prepared
+            ready: function () {
+            },
+
+            // Fires when the element was inserted into the document
+            attached: function () {
+            },
+
+            // Fires when the element was removed from the document
+            detached: function () {
+            },
+
+            // Fires when an attribute was added, removed, or updated
+            attributeChanged: function (name, type) {
+            },
+
+            /**
+             * @param item
+             * @returns {*}
+             * @private
+             */
+            _getStatusClasses: function (item) {
+                if (item === 'completed') {
+                    return 'progress-step is-complete';
+                }
+                else if(item === 'active'){
+                    return 'progress-step is-active';
+                }
+                else{
+                    return 'progress-step';
+                }
+            },
+            stepIndex: function (index) {
+                return parseInt(index)+1;
+            }
+        });
+    </script>
+</dom-module>
